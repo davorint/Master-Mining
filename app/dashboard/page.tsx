@@ -58,26 +58,26 @@ export default function Page() {
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <div className="grid gap-4 md:grid-cols-2">
-            <Card className="min-h-[600px]">
+          <div className="grid gap-4 md:grid-cols-2 md:grid-rows-1 md:items-stretch">
+            <Card className="flex flex-col">
               <CardHeader>
                 <CardTitle className="text-primary">Distribución de Operaciones</CardTitle>
                 <CardDescription className="destructive">
                   Clasificación detallada de todas las operaciones mineras activas
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="flex-1">
                 <PieLegendChart />
               </CardContent>
             </Card>
-            <Card className="min-h-[600px]">
+            <Card className="flex flex-col">
               <CardHeader>
                 <CardTitle className="text-primary">Distribución Geográfica</CardTitle>
                 <CardDescription className="destructive">
                   Mapa de México con concentración de operaciones mineras por estado
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="flex-1">
                 <MexicoMapChart />
               </CardContent>
             </Card>
