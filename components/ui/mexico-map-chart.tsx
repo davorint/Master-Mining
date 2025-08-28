@@ -168,7 +168,7 @@ export function MexicoMapChart({ className }: MexicoMapChartProps) {
           ]
         }
 
-        chartInstance.current.setOption(option)
+        chartInstance.current?.setOption(option)
       } catch (error) {
         console.error('Error loading Mexico map:', error)
       }
