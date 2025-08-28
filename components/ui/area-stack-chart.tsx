@@ -45,7 +45,7 @@ export function AreaStackChart({ className }: AreaStackChartProps) {
         }
       },
       legend: {
-        data: ['Mina Cordero', 'Mina Rodeo', 'Mina Orisyvo', 'Planta Norte', 'Planta Sur'],
+        data: ['Mina Peñasquito', 'Mina Fresnillo', 'Mina Saucito', 'Mina Sabinas', 'Mina Ciénega'],
         textStyle: {
           color: '#ffffff'
         },
@@ -102,7 +102,7 @@ export function AreaStackChart({ className }: AreaStackChartProps) {
       ],
       series: [
         {
-          name: 'Mina Cordero',
+          name: 'Mina Peñasquito',
           type: 'line',
           stack: 'Total',
           smooth: true,
@@ -129,7 +129,7 @@ export function AreaStackChart({ className }: AreaStackChartProps) {
           data: [850, 920, 780, 1100, 950, 1200, 1350, 1450, 1320, 1180, 900, 750]
         },
         {
-          name: 'Mina Rodeo',
+          name: 'Mina Fresnillo',
           type: 'line',
           stack: 'Total',
           smooth: true,
@@ -156,7 +156,7 @@ export function AreaStackChart({ className }: AreaStackChartProps) {
           data: [650, 720, 680, 890, 820, 950, 1100, 1200, 1050, 980, 750, 600]
         },
         {
-          name: 'Mina Orisyvo',
+          name: 'Mina Saucito',
           type: 'line',
           stack: 'Total',
           smooth: true,
@@ -183,7 +183,7 @@ export function AreaStackChart({ className }: AreaStackChartProps) {
           data: [420, 480, 520, 680, 590, 750, 850, 920, 800, 720, 550, 450]
         },
         {
-          name: 'Planta Norte',
+          name: 'Mina Sabinas',
           type: 'line',
           stack: 'Total',
           smooth: true,
@@ -210,7 +210,7 @@ export function AreaStackChart({ className }: AreaStackChartProps) {
           data: [380, 420, 450, 580, 520, 650, 720, 780, 680, 620, 480, 380]
         },
         {
-          name: 'Planta Sur',
+          name: 'Mina Ciénega',
           type: 'line',
           stack: 'Total',
           smooth: true,
