@@ -28,7 +28,7 @@ export function PieLegendChart({ className }: PieLegendChartProps) {
       },
       legend: {
         orient: 'vertical',
-        left: 'left',
+        left: '5%',
         top: '20%',
         width: '25%'
       },
