@@ -5,11 +5,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
-import { ArrowRight, Check, Star, Zap, Shield, Sparkles, Users, Trophy, MapPin, Calculator, FileText, Truck, Receipt } from "lucide-react"
+import { ArrowRight, Star, Sparkles, Users, MapPin, Calculator, FileText, Truck, Receipt } from "lucide-react"
 import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence, useInView } from "motion/react"
-import { useState, useEffect, useRef, lazy, Suspense } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
-import Image from "next/image"
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -22,7 +21,6 @@ export default function Home() {
   // Intersection observer for performance
   const featuresInView = useInView(featuresRef, { once: true, margin: "-100px" })
   const testimonialsInView = useInView(testimonialsRef, { once: true, margin: "-100px" })
-  const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" })
   
   // Smooth mouse tracking with reduced frequency
   const mouseX = useMotionValue(0)
@@ -309,27 +307,28 @@ export default function Home() {
                 </motion.span>
               ))}
               <motion.span 
-                className="bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400 bg-clip-text text-transparent"
+                className="bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400 bg-clip-text text-transparent cursor-pointer font-inter"
                 style={{
                   backgroundSize: "200% 200%",
                 }}
-                animate={{
+                initial={{ opacity: 0, x: -30, scale: 0.8 }}
+                animate={{ 
+                  opacity: 1, 
+                  x: 0, 
+                  scale: 1,
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
                 }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
+                transition={{ 
+                  opacity: { duration: 1, delay: 1.2, ease: "easeOut" },
+                  x: { duration: 1, delay: 1.2, ease: "easeOut" },
+                  scale: { duration: 1, delay: 1.2, ease: "easeOut" },
+                  backgroundPosition: { duration: 4, repeat: Infinity, ease: "easeInOut" }
                 }}
-                initial={{ opacity: 0, x: -30, scale: 0.8 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
                 whileHover={{
                   scale: 1.05,
                   filter: "drop-shadow(0 0 30px rgba(245,158,11,0.4))",
                   transition: { duration: 0.3 }
                 }}
-                className="cursor-pointer font-inter"
               >
                 {" "}Master System
               </motion.span>
@@ -340,14 +339,6 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1.4, ease: "easeOut" }}
-              whileInView={{
-                backgroundImage: "linear-gradient(45deg, #f8fafc, #e2e8f0, #f8fafc)",
-                backgroundSize: "200% 200%",
-                backgroundClip: "text",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
-                animation: "shine 3s ease-in-out infinite"
-              }}
             >
               {"Representación oficial de fabricantes europeos de equipos para minería de metales preciosos en México y América. CRM especializado, cotizaciones con IA y gestión integral.".split(" ").map((word, i) => (
                 <motion.span
@@ -1168,7 +1159,7 @@ export default function Home() {
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.8 }}
                   >
-                    "Los equipos de procesamiento de oro que suministra Sualtec han aumentado significativamente nuestro rendimiento. El sistema nos mantiene organizados."
+                    &ldquo;Los equipos de procesamiento de oro que suministra Sualtec han aumentado significativamente nuestro rendimiento. El sistema nos mantiene organizados.&rdquo;
                   </motion.p>
                   <motion.div 
                     className="flex items-center"
@@ -1237,7 +1228,7 @@ export default function Home() {
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.8 }}
                   >
-                    "Las cotizaciones especializadas para equipos de refinación de plata y el CRM nos han permitido expandir operaciones eficientemente."
+                    &ldquo;Las cotizaciones especializadas para equipos de refinación de plata y el CRM nos han permitido expandir operaciones eficientemente.&rdquo;
                   </motion.p>
                   <motion.div 
                     className="flex items-center"
@@ -1306,7 +1297,7 @@ export default function Home() {
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.8 }}
                   >
-                    "Los catálogos especializados en equipos de concentración minera y la gestión automatizada han revolucionado nuestras compras."
+                    &ldquo;Los catálogos especializados en equipos de concentración minera y la gestión automatizada han revolucionado nuestras compras.&rdquo;
                   </motion.p>
                   <motion.div 
                     className="flex items-center"
