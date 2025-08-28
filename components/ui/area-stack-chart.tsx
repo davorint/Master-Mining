@@ -34,8 +34,10 @@ export function AreaStackChart({ className }: AreaStackChartProps) {
             backgroundColor: '#6a7985'
           }
         },
-        formatter: function (params: any) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        formatter: function (params: any[]) {
           let result = `<strong>${params[0].axisValue}</strong><br/>`
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           params.forEach((param: any) => {
             result += `${param.marker} ${param.seriesName}: ${param.value} toneladas<br/>`
           })

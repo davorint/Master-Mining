@@ -78,6 +78,7 @@ export function SankeyChart({ className }: SankeyChartProps) {
       tooltip: {
         trigger: 'item',
         triggerOn: 'mousemove',
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         formatter: function (params: any) {
           if (params.dataType === 'edge') {
             return `${params.data.source} → ${params.data.target}<br/>${params.data.value} toneladas`

@@ -56,8 +56,10 @@ export function AqiLineChart({ className }: AqiLineChartProps) {
             backgroundColor: '#6a7985'
           }
         },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         formatter: function (params: any) {
           let result = `<strong>${params[0].axisValue}</strong><br/>`
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           params.forEach((param: any) => {
             let unit = ''
             if (param.seriesName.includes('Ruido')) {

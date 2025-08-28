@@ -139,6 +139,7 @@ export function SunburstChart({ className }: SunburstChartProps) {
       },
       tooltip: {
         trigger: 'item',
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         formatter: function (params: any) {
           if (params.data.value) {
             return `<strong>${params.data.name}</strong><br/>Valor: ${params.data.value}`

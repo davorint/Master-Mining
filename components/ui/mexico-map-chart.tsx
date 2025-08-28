@@ -7,6 +7,11 @@ interface MexicoMapChartProps {
   className?: string
 }
 
+interface TooltipParams {
+  name: string
+  value: number
+}
+
 export function MexicoMapChart({ className }: MexicoMapChartProps) {
   const chartRef = useRef<HTMLDivElement>(null)
   const chartInstance = useRef<echarts.ECharts | null>(null)
@@ -88,7 +93,7 @@ export function MexicoMapChart({ className }: MexicoMapChartProps) {
             trigger: 'item',
             showDelay: 0,
             transitionDuration: 0.2,
-            formatter: function (params: any) {
+            formatter: function (params: TooltipParams) {
               const value = params.value || 0
               return `<strong>${params.name}</strong><br/>Minas activas: ${value}`
             }

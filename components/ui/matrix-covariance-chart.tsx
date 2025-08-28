@@ -19,7 +19,7 @@ export function MatrixCovarianceChart({ className }: MatrixCovarianceChartProps)
 
     // Generate mining correlation data
     const minerals = ['Oro', 'Plata', 'Cobre', 'Zinc', 'Hierro', 'Níquel', 'Plomo', 'Manganeso', 'Carbón', 'Sal'];
-    const data: any[] = []
+    const data: [number, number, number][] = []
 
     // Generate synthetic correlation matrix data
     for (let i = 0; i < minerals.length; i++) {
