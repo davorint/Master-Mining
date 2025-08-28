@@ -48,7 +48,8 @@ export function AreaStackChart({ className }: AreaStackChartProps) {
         data: ['Mina Cordero', 'Mina Rodeo', 'Mina Orisyvo', 'Planta Norte', 'Planta Sur'],
         textStyle: {
           color: '#ffffff'
-        }
+        },
+        bottom: '5%'
       },
       toolbox: {
         feature: {
@@ -58,7 +59,7 @@ export function AreaStackChart({ className }: AreaStackChartProps) {
       grid: {
         left: '3%',
         right: '4%',
-        bottom: '10%',
+        bottom: '20%',
         containLabel: true
       },
       xAxis: [

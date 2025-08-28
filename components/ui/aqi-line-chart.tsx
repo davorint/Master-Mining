@@ -76,7 +76,8 @@ export function AqiLineChart({ className }: AqiLineChartProps) {
         data: ['PM2.5', 'PM10', 'NO2', 'Polvo Suspendido', 'Nivel de Ruido'],
         textStyle: {
           color: '#ffffff'
-        }
+        },
+        bottom: '5%'
       },
       toolbox: {
         feature: {
@@ -86,7 +87,7 @@ export function AqiLineChart({ className }: AqiLineChartProps) {
       grid: {
         left: '3%',
         right: '4%',
-        bottom: '10%',
+        bottom: '20%',
         containLabel: true
       },
       xAxis: {
