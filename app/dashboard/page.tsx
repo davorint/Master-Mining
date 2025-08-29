@@ -23,7 +23,7 @@ import {
 import { AreaStackChart } from "@/components/ui/area-stack-chart"
 import { AqiLineChart } from "@/components/ui/aqi-line-chart"
 import { SankeyChart } from "@/components/ui/sankey-chart"
-import { SunburstChart } from "@/components/ui/sunburst-chart"
+import { TreemapChart } from "@/components/ui/treemap-chart"
 import { MexicoMapChart } from "@/components/ui/mexico-map-chart"
 import { BarStackChart } from "@/components/ui/bar-stack-chart"
 import { PieLegendChart } from "@/components/ui/pie-legend-chart"
@@ -122,11 +122,11 @@ export default function Page() {
               <CardHeader>
                 <CardTitle className="text-primary">Clasificación de Operaciones</CardTitle>
                 <CardDescription className="destructive">
-                  Categorización por tipo de mineral y operaciones mineras
+                  Jerarquía visual de operaciones mineras por tipo de mineral y escala de producción
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <SunburstChart />
+                <TreemapChart />
               </CardContent>
             </Card>
           </div>
