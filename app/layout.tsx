@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
@@ -49,8 +49,12 @@ export const metadata: Metadata = {
     title: "Sualtec Master System - Plataforma Integral Minera e Industrial",
     description: "Representación oficial de fabricantes europeos de equipos para minería de metales preciosos. CRM especializado, cotizaciones con IA y gestión integral.",
   },
-  viewport: "width=device-width, initial-scale=1",
   themeColor: "#0f172a",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
