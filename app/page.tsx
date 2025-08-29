@@ -249,7 +249,7 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Badge variant="outline" className="mb-8 px-8 py-3 text-sm font-medium border-white/20 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all duration-500">
+                <Badge variant="outline" className="mb-8 px-8 py-3 text-sm font-medium border-white/20 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all duration-500 text-white">
                   <motion.div
                     animate={{ 
                       rotate: [0, 360],
@@ -280,7 +280,7 @@ export default function Home() {
             </motion.div>
             
             <motion.h1 
-              className="mb-8 text-6xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-7xl lg:text-8xl font-playfair"
+              className="mb-8 text-6xl font-bold tracking-tight text-white sm:text-7xl lg:text-8xl font-playfair"
               initial={{ opacity: 0, y: 50, scale: 0.8 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
@@ -335,7 +335,7 @@ export default function Home() {
             </motion.h1>
             
             <motion.p 
-              className="mx-auto mb-12 max-w-2xl text-xl leading-8 text-gray-700 dark:text-gray-100 font-inter"
+              className="mx-auto mb-12 max-w-2xl text-xl leading-8 text-gray-100 font-inter"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1.4, ease: "easeOut" }}
@@ -498,7 +498,7 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
           >
             <motion.h2 
-              className="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl font-playfair"
+              className="mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl font-playfair"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -507,7 +507,7 @@ export default function Home() {
               ¿Por qué elegir Sualtec Master System?
             </motion.h2>
             <motion.p 
-              className="mx-auto mb-16 max-w-2xl text-lg text-gray-600 dark:text-gray-200 font-inter"
+              className="mx-auto mb-16 max-w-2xl text-lg text-gray-200 font-inter"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -546,7 +546,7 @@ export default function Home() {
                 transition: { duration: 0.3, ease: "easeOut" }
               }}
             >
-              <Card className="group border-white/[0.08] bg-black/75 backdrop-blur-xl transition-all duration-300 hover:bg-black/65 hover:border-white/15 relative overflow-hidden rounded-2xl shadow-2xl shadow-black/20 hover:shadow-orange-500/20 cursor-pointer">
+              <Card className="group border-white/[0.08] bg-black/50 backdrop-blur-xl transition-all duration-300 hover:bg-black/40 hover:border-white/15 relative overflow-hidden rounded-2xl shadow-2xl shadow-black/20 hover:shadow-orange-500/20 cursor-pointer">
                 
                 {/* Enhanced gradient overlay with glow effect */}
                 <motion.div
@@ -574,11 +574,11 @@ export default function Home() {
                     <MapPin className="h-7 w-7 text-orange-300 group-hover:text-orange-200 transition-colors duration-300" />
                   </motion.div>
                   
-                  <CardTitle className="text-xl text-gray-900 dark:text-white group-hover:text-orange-100 transition-all duration-300 mb-3 font-semibold font-playfair">
+                  <CardTitle className="text-xl text-white group-hover:text-orange-100 transition-all duration-300 mb-3 font-semibold font-playfair">
                     Directorio de Clientes
                   </CardTitle>
                   
-                  <CardDescription className="text-gray-600 dark:text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed font-inter">
+                  <CardDescription className="text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed font-inter">
                     Gestión completa de operaciones mineras, plantas de procesamiento y ubicaciones detalladas.
                   </CardDescription>
                 </CardHeader>
@@ -601,7 +601,7 @@ export default function Home() {
                 transition: { duration: 0.3, ease: "easeOut" }
               }}
             >
-              <Card className="group border-white/[0.08] bg-black/75 backdrop-blur-xl transition-all duration-300 hover:bg-black/65 hover:border-white/15 relative overflow-hidden rounded-2xl shadow-2xl shadow-black/20 hover:shadow-emerald-500/20 cursor-pointer">
+              <Card className="group border-white/[0.08] bg-black/50 backdrop-blur-xl transition-all duration-300 hover:bg-black/40 hover:border-white/15 relative overflow-hidden rounded-2xl shadow-2xl shadow-black/20 hover:shadow-emerald-500/20 cursor-pointer">
                 
                 {/* Enhanced gradient overlay with glow effect */}
                 <motion.div
@@ -629,11 +629,11 @@ export default function Home() {
                     <Calculator className="h-7 w-7 text-emerald-300 group-hover:text-emerald-200 transition-colors duration-300" />
                   </motion.div>
                   
-                  <CardTitle className="text-xl text-gray-900 dark:text-white group-hover:text-emerald-100 transition-all duration-300 mb-3 font-semibold font-playfair">
+                  <CardTitle className="text-xl text-white group-hover:text-emerald-100 transition-all duration-300 mb-3 font-semibold font-playfair">
                     Cotizador de Equipos IA
                   </CardTitle>
                   
-                  <CardDescription className="text-gray-600 dark:text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed font-inter">
+                  <CardDescription className="text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed font-inter">
                     Cotizaciones especializadas para equipos de procesamiento de oro, plata y metales preciosos.
                   </CardDescription>
                 </CardHeader>
@@ -654,7 +654,7 @@ export default function Home() {
                 transition: { duration: 0.3, ease: "easeOut" }
               }}
             >
-              <Card className="group border-white/[0.08] bg-black/75 backdrop-blur-xl transition-all duration-700 hover:bg-black/65 hover:border-white/15 relative overflow-hidden rounded-2xl shadow-2xl shadow-black/20 hover:shadow-blue-500/20 cursor-pointer">
+              <Card className="group border-white/[0.08] bg-black/50 backdrop-blur-xl transition-all duration-700 hover:bg-black/40 hover:border-white/15 relative overflow-hidden rounded-2xl shadow-2xl shadow-black/20 hover:shadow-blue-500/20 cursor-pointer">
                 
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-blue-400/0 via-blue-400/10 to-purple-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -709,7 +709,7 @@ export default function Home() {
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <CardTitle className="text-xl text-gray-900 dark:text-white group-hover:text-blue-100 transition-all duration-300 mb-3 font-semibold font-playfair">
+                    <CardTitle className="text-xl text-white group-hover:text-blue-100 transition-all duration-300 mb-3 font-semibold font-playfair">
                       {"CRM Avanzado".split("").map((char, i) => (
                         <motion.span
                           key={i}
@@ -726,7 +726,7 @@ export default function Home() {
                       ))}
                     </CardTitle>
                     
-                    <CardDescription className="text-gray-600 dark:text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed font-inter">
+                    <CardDescription className="text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed font-inter">
                       {"Gestión especializada de operaciones mineras, prospectos y seguimientos comerciales.".split(" ").map((word, i) => (
                         <motion.span
                           key={i}
@@ -757,7 +757,7 @@ export default function Home() {
                 transition: { duration: 0.3, ease: "easeOut" }
               }}
             >
-              <Card className="group border-white/[0.08] bg-black/75 backdrop-blur-xl transition-all duration-700 hover:bg-black/65 hover:border-white/15 relative overflow-hidden rounded-2xl shadow-2xl shadow-black/20 hover:shadow-purple-500/20">
+              <Card className="group border-white/[0.08] bg-black/50 backdrop-blur-xl transition-all duration-700 hover:bg-black/40 hover:border-white/15 relative overflow-hidden rounded-2xl shadow-2xl shadow-black/20 hover:shadow-purple-500/20">
                 
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-purple-400/0 via-purple-400/10 to-pink-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -812,7 +812,7 @@ export default function Home() {
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <CardTitle className="text-xl text-gray-900 dark:text-white group-hover:text-purple-100 transition-all duration-300 mb-3 font-semibold">
+                    <CardTitle className="text-xl text-white group-hover:text-purple-100 transition-all duration-300 mb-3 font-semibold">
                       {"Gestión Documental".split("").map((char, i) => (
                         <motion.span
                           key={i}
@@ -829,7 +829,7 @@ export default function Home() {
                       ))}
                     </CardTitle>
                     
-                    <CardDescription className="text-gray-600 dark:text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed">
+                    <CardDescription className="text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed">
                       {"Catálogos especializados en equipos para procesamiento de metales y documentación técnica.".split(" ").map((word, i) => (
                         <motion.span
                           key={i}
@@ -860,7 +860,7 @@ export default function Home() {
                 transition: { duration: 0.3, ease: "easeOut" }
               }}
             >
-              <Card className="group border-white/[0.08] bg-black/75 backdrop-blur-xl transition-all duration-700 hover:bg-black/65 hover:border-white/15 relative overflow-hidden rounded-2xl shadow-2xl shadow-black/20 hover:shadow-cyan-500/20">
+              <Card className="group border-white/[0.08] bg-black/50 backdrop-blur-xl transition-all duration-700 hover:bg-black/40 hover:border-white/15 relative overflow-hidden rounded-2xl shadow-2xl shadow-black/20 hover:shadow-cyan-500/20">
                 
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-cyan-400/0 via-cyan-400/10 to-teal-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -915,7 +915,7 @@ export default function Home() {
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <CardTitle className="text-xl text-gray-900 dark:text-white group-hover:text-cyan-100 transition-all duration-300 mb-3 font-semibold">
+                    <CardTitle className="text-xl text-white group-hover:text-cyan-100 transition-all duration-300 mb-3 font-semibold">
                       {"Fabricantes Europeos".split("").map((char, i) => (
                         <motion.span
                           key={i}
@@ -932,7 +932,7 @@ export default function Home() {
                       ))}
                     </CardTitle>
                     
-                    <CardDescription className="text-gray-600 dark:text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed">
+                    <CardDescription className="text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed">
                       {"Base de datos de fabricantes europeos especializados en tecnología minera avanzada.".split(" ").map((word, i) => (
                         <motion.span
                           key={i}
@@ -963,7 +963,7 @@ export default function Home() {
                 transition: { duration: 0.3, ease: "easeOut" }
               }}
             >
-              <Card className="group border-white/[0.08] bg-black/75 backdrop-blur-xl transition-all duration-700 hover:bg-black/65 hover:border-white/15 relative overflow-hidden rounded-2xl shadow-2xl shadow-black/20 hover:shadow-amber-500/20">
+              <Card className="group border-white/[0.08] bg-black/50 backdrop-blur-xl transition-all duration-700 hover:bg-black/40 hover:border-white/15 relative overflow-hidden rounded-2xl shadow-2xl shadow-black/20 hover:shadow-amber-500/20">
                 
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-amber-400/0 via-amber-400/10 to-orange-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -1021,7 +1021,7 @@ export default function Home() {
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <CardTitle className="text-xl text-gray-900 dark:text-white group-hover:text-amber-100 transition-all duration-300 mb-3 font-semibold">
+                    <CardTitle className="text-xl text-white group-hover:text-amber-100 transition-all duration-300 mb-3 font-semibold">
                       {"Facturación Digital".split("").map((char, i) => (
                         <motion.span
                           key={i}
@@ -1038,7 +1038,7 @@ export default function Home() {
                       ))}
                     </CardTitle>
                     
-                    <CardDescription className="text-gray-600 dark:text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed">
+                    <CardDescription className="text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed">
                       {"Sistema completo de facturación electrónica y control contable.".split(" ").map((word, i) => (
                         <motion.span
                           key={i}
@@ -1081,7 +1081,7 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
           >
             <motion.h2 
-              className="mb-4 text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-50 sm:text-4xl font-playfair"
+              className="mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl font-playfair"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -1090,7 +1090,7 @@ export default function Home() {
               Confianza de la Industria
             </motion.h2>
             <motion.p 
-              className="mx-auto mb-16 max-w-2xl text-lg text-stone-600 dark:text-stone-400 font-inter"
+              className="mx-auto mb-16 max-w-2xl text-lg text-gray-200 font-inter"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -1129,7 +1129,7 @@ export default function Home() {
                 transition: { duration: 0.3 }
               }}
             >
-              <Card className="border-white/[0.08] bg-black/75 backdrop-blur-xl relative overflow-hidden group rounded-2xl shadow-2xl shadow-black/20">
+              <Card className="border-white/[0.08] bg-black/50 backdrop-blur-xl relative overflow-hidden group rounded-2xl shadow-2xl shadow-black/20">
                 <motion.div 
                   className="absolute inset-0 bg-gradient-to-br from-stone-100/20 via-transparent to-stone-200/20 dark:from-stone-700/20 dark:to-stone-600/20 opacity-0 group-hover:opacity-100"
                   transition={{ duration: 0.5 }}
@@ -1154,7 +1154,7 @@ export default function Home() {
                     ))}
                   </motion.div>
                   <motion.p 
-                    className="mb-4 text-stone-600 dark:text-stone-400"
+                    className="mb-4 text-gray-200"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.8 }}
@@ -1174,8 +1174,8 @@ export default function Home() {
                       </Avatar>
                     </motion.div>
                     <div>
-                      <p className="font-medium text-stone-900 dark:text-stone-50">Roberto Martínez</p>
-                      <p className="text-sm text-stone-600 dark:text-stone-400">Director de Operaciones, Mina de Oro Rodeo</p>
+                      <p className="font-medium text-white">Roberto Martínez</p>
+                      <p className="text-sm text-gray-300">Director de Operaciones, Mina de Oro Rodeo</p>
                     </div>
                   </motion.div>
                 </CardContent>
@@ -1198,7 +1198,7 @@ export default function Home() {
                 transition: { duration: 0.3 }
               }}
             >
-              <Card className="border-white/[0.08] bg-black/75 backdrop-blur-xl relative overflow-hidden group rounded-2xl shadow-2xl shadow-black/20">
+              <Card className="border-white/[0.08] bg-black/50 backdrop-blur-xl relative overflow-hidden group rounded-2xl shadow-2xl shadow-black/20">
                 <motion.div 
                   className="absolute inset-0 bg-gradient-to-br from-stone-100/20 via-transparent to-stone-200/20 dark:from-stone-700/20 dark:to-stone-600/20 opacity-0 group-hover:opacity-100"
                   transition={{ duration: 0.5 }}
@@ -1223,7 +1223,7 @@ export default function Home() {
                     ))}
                   </motion.div>
                   <motion.p 
-                    className="mb-4 text-stone-600 dark:text-stone-400"
+                    className="mb-4 text-gray-200"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.8 }}
@@ -1243,8 +1243,8 @@ export default function Home() {
                       </Avatar>
                     </motion.div>
                     <div>
-                      <p className="font-medium text-stone-900 dark:text-stone-50">Laura Cervantes</p>
-                      <p className="text-sm text-stone-600 dark:text-stone-400">Gerente de Procesos, Minera Plata Orisyvo</p>
+                      <p className="font-medium text-white">Laura Cervantes</p>
+                      <p className="text-sm text-gray-300">Gerente de Procesos, Minera Plata Orisyvo</p>
                     </div>
                   </motion.div>
                 </CardContent>
@@ -1267,7 +1267,7 @@ export default function Home() {
                 transition: { duration: 0.3 }
               }}
             >
-              <Card className="border-white/[0.08] bg-black/75 backdrop-blur-xl relative overflow-hidden group rounded-2xl shadow-2xl shadow-black/20">
+              <Card className="border-white/[0.08] bg-black/50 backdrop-blur-xl relative overflow-hidden group rounded-2xl shadow-2xl shadow-black/20">
                 <motion.div 
                   className="absolute inset-0 bg-gradient-to-br from-stone-100/20 via-transparent to-stone-200/20 dark:from-stone-700/20 dark:to-stone-600/20 opacity-0 group-hover:opacity-100"
                   transition={{ duration: 0.5 }}
@@ -1292,7 +1292,7 @@ export default function Home() {
                     ))}
                   </motion.div>
                   <motion.p 
-                    className="mb-4 text-stone-600 dark:text-stone-400"
+                    className="mb-4 text-gray-200"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.8 }}
@@ -1312,8 +1312,8 @@ export default function Home() {
                       </Avatar>
                     </motion.div>
                     <div>
-                      <p className="font-medium text-stone-900 dark:text-stone-50">Ana Salinas</p>
-                      <p className="text-sm text-stone-600 dark:text-stone-400">Directora de Adquisiciones, Minera Cordero Gold</p>
+                      <p className="font-medium text-white">Ana Salinas</p>
+                      <p className="text-sm text-gray-300">Directora de Adquisiciones, Minera Cordero Gold</p>
                     </div>
                   </motion.div>
                 </CardContent>
@@ -1370,7 +1370,7 @@ export default function Home() {
         
         <div className="mx-auto max-w-4xl text-center relative z-10">
           <motion.h2 
-            className="mb-4 text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-50 sm:text-4xl font-playfair"
+            className="mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl font-playfair"
             initial={{ opacity: 0, y: 30, scale: 0.9 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -1379,7 +1379,7 @@ export default function Home() {
             ¿Listo para Modernizar tu Negocio?
           </motion.h2>
           <motion.p 
-            className="mx-auto mb-8 max-w-2xl text-lg text-stone-600 dark:text-stone-400 font-inter"
+            className="mx-auto mb-8 max-w-2xl text-lg text-gray-200 font-inter"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
@@ -1433,7 +1433,7 @@ export default function Home() {
 
       {/* Footer */}
       <motion.footer 
-        className="border-t border-white/[0.08] bg-black/75 backdrop-blur-xl relative shadow-2xl shadow-black/20"
+        className="border-t border-white/[0.08] bg-black/50 backdrop-blur-xl relative shadow-2xl shadow-black/20"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -1462,12 +1462,12 @@ export default function Home() {
               }}
             >
               <motion.h3 
-                className="mb-4 text-2xl font-bold text-gray-900 dark:text-white"
+                className="mb-4 text-2xl font-bold text-white"
                 whileHover={{ scale: 1.02 }}
               >
                 Sualtec Master System
               </motion.h3>
-              <p className="mb-4 max-w-md text-gray-600 dark:text-gray-300">
+              <p className="mb-4 max-w-md text-gray-300">
                 Optimizando las operaciones industriales y mineras a través de tecnología de vanguardia y diseño intuitivo.
               </p>
             </motion.div>
@@ -1477,8 +1477,8 @@ export default function Home() {
                 visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
               }}
             >
-              <h4 className="mb-4 font-semibold text-gray-900 dark:text-white">Plataforma</h4>
-              <ul className="space-y-2 text-gray-600 dark:text-gray-300">
+              <h4 className="mb-4 font-semibold text-white">Plataforma</h4>
+              <ul className="space-y-2 text-gray-300">
                 <li><motion.a href="#" whileHover={{ x: 5, color: "rgb(28 25 23)" }} className="hover:text-stone-900 dark:hover:text-stone-50 block">CRM</motion.a></li>
                 <li><motion.a href="#" whileHover={{ x: 5, color: "rgb(28 25 23)" }} className="hover:text-stone-900 dark:hover:text-stone-50 block">Cotizaciones</motion.a></li>
                 <li><motion.a href="#" whileHover={{ x: 5, color: "rgb(28 25 23)" }} className="hover:text-stone-900 dark:hover:text-stone-50 block">Facturación</motion.a></li>
@@ -1491,8 +1491,8 @@ export default function Home() {
                 visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
               }}
             >
-              <h4 className="mb-4 font-semibold text-gray-900 dark:text-white">Empresa</h4>
-              <ul className="space-y-2 text-gray-600 dark:text-gray-300">
+              <h4 className="mb-4 font-semibold text-white">Empresa</h4>
+              <ul className="space-y-2 text-gray-300">
                 <li><motion.a href="#" whileHover={{ x: 5, color: "rgb(28 25 23)" }} className="hover:text-stone-900 dark:hover:text-stone-50 block">Nosotros</motion.a></li>
                 <li><motion.a href="#" whileHover={{ x: 5, color: "rgb(28 25 23)" }} className="hover:text-stone-900 dark:hover:text-stone-50 block">Blog</motion.a></li>
                 <li><motion.a href="#" whileHover={{ x: 5, color: "rgb(28 25 23)" }} className="hover:text-stone-900 dark:hover:text-stone-50 block">Carreras</motion.a></li>
@@ -1516,13 +1516,13 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <motion.p 
-              className="text-gray-600 dark:text-gray-300"
+              className="text-gray-300"
               whileHover={{ scale: 1.02 }}
             >
               © 2025 Sualtec Master System. Todos los derechos reservados.
             </motion.p>
             <motion.div 
-              className="flex gap-4 text-gray-600 dark:text-gray-300"
+              className="flex gap-4 text-gray-300"
               initial="hidden"
               whileInView="visible"
               variants={{
