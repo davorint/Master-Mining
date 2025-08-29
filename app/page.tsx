@@ -280,7 +280,7 @@ export default function Home() {
             </motion.div>
             
             <motion.h1 
-              className="mb-8 text-6xl font-bold tracking-tight text-white sm:text-7xl lg:text-8xl font-playfair"
+              className="mb-8 text-6xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-7xl lg:text-8xl font-playfair"
               initial={{ opacity: 0, y: 50, scale: 0.8 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
@@ -335,7 +335,7 @@ export default function Home() {
             </motion.h1>
             
             <motion.p 
-              className="mx-auto mb-12 max-w-2xl text-xl leading-8 text-gray-100 font-inter"
+              className="mx-auto mb-12 max-w-2xl text-xl leading-8 text-gray-700 dark:text-gray-100 font-inter"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1.4, ease: "easeOut" }}
@@ -498,7 +498,7 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
           >
             <motion.h2 
-              className="mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl font-playfair"
+              className="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl font-playfair"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -507,7 +507,7 @@ export default function Home() {
               ¿Por qué elegir Sualtec Master System?
             </motion.h2>
             <motion.p 
-              className="mx-auto mb-16 max-w-2xl text-lg text-gray-200 font-inter"
+              className="mx-auto mb-16 max-w-2xl text-lg text-gray-600 dark:text-gray-200 font-inter"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -574,11 +574,11 @@ export default function Home() {
                     <MapPin className="h-7 w-7 text-orange-300 group-hover:text-orange-200 transition-colors duration-300" />
                   </motion.div>
                   
-                  <CardTitle className="text-xl text-white group-hover:text-orange-100 transition-all duration-300 mb-3 font-semibold font-playfair">
+                  <CardTitle className="text-xl text-gray-900 dark:text-white group-hover:text-orange-100 transition-all duration-300 mb-3 font-semibold font-playfair">
                     Directorio de Clientes
                   </CardTitle>
                   
-                  <CardDescription className="text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed font-inter">
+                  <CardDescription className="text-gray-600 dark:text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed font-inter">
                     Gestión completa de operaciones mineras, plantas de procesamiento y ubicaciones detalladas.
                   </CardDescription>
                 </CardHeader>
@@ -629,11 +629,11 @@ export default function Home() {
                     <Calculator className="h-7 w-7 text-emerald-300 group-hover:text-emerald-200 transition-colors duration-300" />
                   </motion.div>
                   
-                  <CardTitle className="text-xl text-white group-hover:text-emerald-100 transition-all duration-300 mb-3 font-semibold font-playfair">
+                  <CardTitle className="text-xl text-gray-900 dark:text-white group-hover:text-emerald-100 transition-all duration-300 mb-3 font-semibold font-playfair">
                     Cotizador de Equipos IA
                   </CardTitle>
                   
-                  <CardDescription className="text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed font-inter">
+                  <CardDescription className="text-gray-600 dark:text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed font-inter">
                     Cotizaciones especializadas para equipos de procesamiento de oro, plata y metales preciosos.
                   </CardDescription>
                 </CardHeader>
@@ -709,7 +709,7 @@ export default function Home() {
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <CardTitle className="text-xl text-white group-hover:text-blue-100 transition-all duration-300 mb-3 font-semibold font-playfair">
+                    <CardTitle className="text-xl text-gray-900 dark:text-white group-hover:text-blue-100 transition-all duration-300 mb-3 font-semibold font-playfair">
                       {"CRM Avanzado".split("").map((char, i) => (
                         <motion.span
                           key={i}
@@ -726,7 +726,7 @@ export default function Home() {
                       ))}
                     </CardTitle>
                     
-                    <CardDescription className="text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed font-inter">
+                    <CardDescription className="text-gray-600 dark:text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed font-inter">
                       {"Gestión especializada de operaciones mineras, prospectos y seguimientos comerciales.".split(" ").map((word, i) => (
                         <motion.span
                           key={i}
@@ -812,7 +812,7 @@ export default function Home() {
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <CardTitle className="text-xl text-white group-hover:text-purple-100 transition-all duration-300 mb-3 font-semibold">
+                    <CardTitle className="text-xl text-gray-900 dark:text-white group-hover:text-purple-100 transition-all duration-300 mb-3 font-semibold">
                       {"Gestión Documental".split("").map((char, i) => (
                         <motion.span
                           key={i}
@@ -829,7 +829,7 @@ export default function Home() {
                       ))}
                     </CardTitle>
                     
-                    <CardDescription className="text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed">
+                    <CardDescription className="text-gray-600 dark:text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed">
                       {"Catálogos especializados en equipos para procesamiento de metales y documentación técnica.".split(" ").map((word, i) => (
                         <motion.span
                           key={i}
@@ -915,7 +915,7 @@ export default function Home() {
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <CardTitle className="text-xl text-white group-hover:text-cyan-100 transition-all duration-300 mb-3 font-semibold">
+                    <CardTitle className="text-xl text-gray-900 dark:text-white group-hover:text-cyan-100 transition-all duration-300 mb-3 font-semibold">
                       {"Fabricantes Europeos".split("").map((char, i) => (
                         <motion.span
                           key={i}
@@ -932,7 +932,7 @@ export default function Home() {
                       ))}
                     </CardTitle>
                     
-                    <CardDescription className="text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed">
+                    <CardDescription className="text-gray-600 dark:text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed">
                       {"Base de datos de fabricantes europeos especializados en tecnología minera avanzada.".split(" ").map((word, i) => (
                         <motion.span
                           key={i}
@@ -1021,7 +1021,7 @@ export default function Home() {
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <CardTitle className="text-xl text-white group-hover:text-amber-100 transition-all duration-300 mb-3 font-semibold">
+                    <CardTitle className="text-xl text-gray-900 dark:text-white group-hover:text-amber-100 transition-all duration-300 mb-3 font-semibold">
                       {"Facturación Digital".split("").map((char, i) => (
                         <motion.span
                           key={i}
@@ -1038,7 +1038,7 @@ export default function Home() {
                       ))}
                     </CardTitle>
                     
-                    <CardDescription className="text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed">
+                    <CardDescription className="text-gray-600 dark:text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed">
                       {"Sistema completo de facturación electrónica y control contable.".split(" ").map((word, i) => (
                         <motion.span
                           key={i}
@@ -1462,12 +1462,12 @@ export default function Home() {
               }}
             >
               <motion.h3 
-                className="mb-4 text-2xl font-bold text-white"
+                className="mb-4 text-2xl font-bold text-gray-900 dark:text-white"
                 whileHover={{ scale: 1.02 }}
               >
                 Sualtec Master System
               </motion.h3>
-              <p className="mb-4 max-w-md text-gray-300">
+              <p className="mb-4 max-w-md text-gray-600 dark:text-gray-300">
                 Optimizando las operaciones industriales y mineras a través de tecnología de vanguardia y diseño intuitivo.
               </p>
             </motion.div>
@@ -1477,8 +1477,8 @@ export default function Home() {
                 visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
               }}
             >
-              <h4 className="mb-4 font-semibold text-white">Plataforma</h4>
-              <ul className="space-y-2 text-gray-300">
+              <h4 className="mb-4 font-semibold text-gray-900 dark:text-white">Plataforma</h4>
+              <ul className="space-y-2 text-gray-600 dark:text-gray-300">
                 <li><motion.a href="#" whileHover={{ x: 5, color: "rgb(28 25 23)" }} className="hover:text-stone-900 dark:hover:text-stone-50 block">CRM</motion.a></li>
                 <li><motion.a href="#" whileHover={{ x: 5, color: "rgb(28 25 23)" }} className="hover:text-stone-900 dark:hover:text-stone-50 block">Cotizaciones</motion.a></li>
                 <li><motion.a href="#" whileHover={{ x: 5, color: "rgb(28 25 23)" }} className="hover:text-stone-900 dark:hover:text-stone-50 block">Facturación</motion.a></li>
@@ -1491,8 +1491,8 @@ export default function Home() {
                 visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
               }}
             >
-              <h4 className="mb-4 font-semibold text-white">Empresa</h4>
-              <ul className="space-y-2 text-gray-300">
+              <h4 className="mb-4 font-semibold text-gray-900 dark:text-white">Empresa</h4>
+              <ul className="space-y-2 text-gray-600 dark:text-gray-300">
                 <li><motion.a href="#" whileHover={{ x: 5, color: "rgb(28 25 23)" }} className="hover:text-stone-900 dark:hover:text-stone-50 block">Nosotros</motion.a></li>
                 <li><motion.a href="#" whileHover={{ x: 5, color: "rgb(28 25 23)" }} className="hover:text-stone-900 dark:hover:text-stone-50 block">Blog</motion.a></li>
                 <li><motion.a href="#" whileHover={{ x: 5, color: "rgb(28 25 23)" }} className="hover:text-stone-900 dark:hover:text-stone-50 block">Carreras</motion.a></li>
@@ -1516,13 +1516,13 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <motion.p 
-              className="text-gray-300"
+              className="text-gray-600 dark:text-gray-300"
               whileHover={{ scale: 1.02 }}
             >
               © 2025 Sualtec Master System. Todos los derechos reservados.
             </motion.p>
             <motion.div 
-              className="flex gap-4 text-gray-300"
+              className="flex gap-4 text-gray-600 dark:text-gray-300"
               initial="hidden"
               whileInView="visible"
               variants={{
