@@ -1159,7 +1159,7 @@ export default function Home() {
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.8 }}
                   >
-                    &ldquo;Los equipos de procesamiento de oro que suministra Sualtec han aumentado significativamente nuestro rendimiento. El sistema nos mantiene organizados.&rdquo;
+                    &ldquo;Los equipos de procesamiento de oro que suministra Sualtec han aumentado significativamente nuestro rendimiento.&rdquo;
                   </motion.p>
                   <motion.div 
                     className="flex items-center"
