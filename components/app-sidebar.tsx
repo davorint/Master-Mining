@@ -134,7 +134,7 @@ const data = {
       items: [
         {
           title: "Actuales",
-          url: "#",
+          url: "/clientes/actuales",
         },
         {
           title: "Prospectos",
