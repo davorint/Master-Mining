@@ -10,7 +10,10 @@ import {
   GridApi, 
   ModuleRegistry, 
   AllCommunityModule,
-  themeQuartz
+  themeQuartz,
+  ICellRendererParams,
+  ICellEditorParams,
+  IFilterParams
 } from 'ag-grid-community'
 
 // Register AG Grid modules
@@ -23,6 +26,55 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Download, Filter, Columns, Users, MapPin, DollarSign, Activity, Package, FileText } from 'lucide-react'
 import { motion } from 'motion/react'
 import { AppSidebar } from "@/components/app-sidebar"
+
+// TypeScript interfaces for AG-Grid components
+interface MiningData {
+  id: number
+  company: string
+  mine: string
+  state: string
+  mineralType: string
+  status: 'Activo' | 'En Mantenimiento' | 'En Evaluación' | 'Prospecto' | 'Inactivo'
+  monthlyRevenue: number
+  safetyRating: number
+  coordinates: { lat: number; lng: number }
+  established: number
+  employees: number
+  yearlyProduction: string
+  notes: string
+  email: string
+  phone: string
+  tags: string[]
+}
+
+interface StatusColors {
+  [key: string]: string
+}
+
+interface TagStyles {
+  [key: string]: string
+}
+
+type StatusRendererProps = ICellRendererParams<MiningData>
+type MineralTypeRendererProps = ICellRendererParams<MiningData>
+type RevenueRendererProps = ICellRendererParams<MiningData>
+type SafetyRatingRendererProps = ICellRendererParams<MiningData>
+type CoordinatesRendererProps = ICellRendererParams<MiningData>
+type TagsRendererProps = ICellRendererParams<MiningData>
+type NumericEditorProps = ICellEditorParams<MiningData>
+type StatusFilterProps = IFilterParams<MiningData>
+
+interface NumericEditorRef {
+  getValue: () => number
+  isCancelAfterEnd: () => boolean
+}
+
+interface StatusFilterRef {
+  doesFilterPass: (params: { data: MiningData }) => boolean
+  isFilterActive: () => boolean
+  getModel: () => string
+  setModel: (model: string | null) => void
+}
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -508,8 +560,8 @@ const generateMiningData = () => {
 }
 
 // Custom Cell Renderers
-const StatusRenderer = (props: any) => {
-  const statusColors: any = {
+const StatusRenderer = (props: StatusRendererProps) => {
+  const statusColors: StatusColors = {
     'Activo': 'bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400',
     'En Mantenimiento': 'bg-amber-100 text-amber-700 dark:bg-amber-900/20 dark:text-amber-400',
     'En Evaluación': 'bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400',
@@ -524,7 +576,7 @@ const StatusRenderer = (props: any) => {
   )
 }
 
-const MineralTypeRenderer = (props: any) => {
+const MineralTypeRenderer = (props: MineralTypeRendererProps) => {
   const getIcon = (type: string) => {
     if (type.includes('Oro')) return '🥇'
     if (type.includes('Plata')) return '🥈'
@@ -544,7 +596,7 @@ const MineralTypeRenderer = (props: any) => {
   )
 }
 
-const RevenueRenderer = (props: any) => {
+const RevenueRenderer = (props: RevenueRendererProps) => {
   return (
     <div className="flex items-center gap-1">
       <DollarSign className="h-4 w-4 text-gold-600 dark:text-gold-400 drop-shadow-sm" />
@@ -555,7 +607,7 @@ const RevenueRenderer = (props: any) => {
   )
 }
 
-const SafetyRatingRenderer = (props: any) => {
+const SafetyRatingRenderer = (props: SafetyRatingRendererProps) => {
   const rating = props.value
   const stars = []
   for (let i = 0; i < 5; i++) {
@@ -570,7 +622,7 @@ const SafetyRatingRenderer = (props: any) => {
   return <div className="flex gap-0.5">{stars}</div>
 }
 
-const CoordinatesRenderer = (props: any) => {
+const CoordinatesRenderer = (props: CoordinatesRendererProps) => {
   if (!props.value) return null
   return (
     <div className="flex items-center gap-1 text-sm">
@@ -582,10 +634,10 @@ const CoordinatesRenderer = (props: any) => {
   )
 }
 
-const TagsRenderer = (props: any) => {
+const TagsRenderer = (props: TagsRendererProps) => {
   if (!props.value || props.value.length === 0) return null
   
-  const tagStyles: any = {
+  const tagStyles: TagStyles = {
     'Premium': 'bg-amber-100 text-amber-700 dark:bg-amber-900/20 dark:text-amber-400',
     'VIP': 'bg-purple-100 text-purple-700 dark:bg-purple-900/20 dark:text-purple-400',
     'Estratégico': 'bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400',
@@ -613,7 +665,7 @@ const TagsRenderer = (props: any) => {
 }
 
 // Custom Cell Editor
-const NumericEditor = React.forwardRef((props: any, ref) => {
+const NumericEditor = React.forwardRef<NumericEditorRef, NumericEditorProps>((props, ref) => {
   const [value, setValue] = useState(props.value)
   
   React.useImperativeHandle(ref, () => ({
@@ -634,17 +686,17 @@ const NumericEditor = React.forwardRef((props: any, ref) => {
 NumericEditor.displayName = 'NumericEditor'
 
 // Custom Filter
-const StatusFilter = React.forwardRef((props: any, ref) => {
+const StatusFilter = React.forwardRef<StatusFilterRef, StatusFilterProps>((props, ref) => {
   const [filterValue, setFilterValue] = useState('')
   
   React.useImperativeHandle(ref, () => ({
-    doesFilterPass: (params: any) => {
+    doesFilterPass: (params: { data: MiningData }) => {
       if (!filterValue) return true
       return params.data.status === filterValue
     },
     isFilterActive: () => filterValue !== '',
     getModel: () => filterValue,
-    setModel: (model: any) => setFilterValue(model || '')
+    setModel: (model: string | null) => setFilterValue(model || '')
   }))
   
   return (
@@ -668,7 +720,7 @@ StatusFilter.displayName = 'StatusFilter'
 export default function ClientesActualesPage() {
   const gridRef = useRef<AgGridReact>(null)
   const [rowData] = useState(generateMiningData())
-  const [selectedRows, setSelectedRows] = useState<any[]>([])
+  const [selectedRows, setSelectedRows] = useState<MiningData[]>([])
   const [quickFilter, setQuickFilter] = useState('')
   const [paginationPageSize, setPaginationPageSize] = useState(10)
   const [gridApi, setGridApi] = useState<GridApi | null>(null)
