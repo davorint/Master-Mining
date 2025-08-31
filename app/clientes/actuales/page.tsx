@@ -8,7 +8,6 @@ import {
   SelectionChangedEvent, 
   CellEditingStoppedEvent, 
   GridApi, 
-  IRowNode, 
   ModuleRegistry, 
   AllCommunityModule,
   themeQuartz
@@ -21,7 +20,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Download, Upload, Filter, Columns, Settings, TrendingUp, Users, MapPin, Calendar, DollarSign, Activity, Package, FileText } from 'lucide-react'
+import { Download, Filter, Columns, Users, MapPin, DollarSign, Activity, Package, FileText } from 'lucide-react'
 import { motion } from 'motion/react'
 import { AppSidebar } from "@/components/app-sidebar"
 import {
@@ -704,11 +703,9 @@ export default function ClientesActualesPage() {
       headerTextColor: '#fbbf24',
       rowHoverColor: '#1f1f1f',
       selectedRowBackgroundColor: 'rgba(251, 191, 36, 0.1)',
-      cellHorizontalBorder: 'solid 1px #1a1a1a',
       wrapperBorderRadius: 8,
       headerHeight: 36,
       rowHeight: 32,
-      cellHorizontalPadding: 10,
       fontSize: 12,
       headerFontSize: 12
     }) : themeQuartz.withParams({
@@ -721,11 +718,9 @@ export default function ClientesActualesPage() {
       headerTextColor: '#b45309',
       rowHoverColor: '#f3f4f6',
       selectedRowBackgroundColor: 'rgba(251, 191, 36, 0.08)',
-      cellHorizontalBorder: 'solid 1px #e5e7eb',
       wrapperBorderRadius: 8,
       headerHeight: 36,
       rowHeight: 32,
-      cellHorizontalPadding: 10,
       fontSize: 12,
       headerFontSize: 12
     })
@@ -870,7 +865,7 @@ export default function ClientesActualesPage() {
         const diffDays = Math.ceil((maintenanceDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
         if (diffDays < 30) return { color: '#dc2626', fontWeight: '500' }
         if (diffDays < 60) return { color: '#d97706', fontWeight: '500' }
-        return { color: '#059669' }
+        return { color: '#059669', fontWeight: 'normal' }
       }
     },
     {
@@ -941,13 +936,6 @@ export default function ClientesActualesPage() {
     })
   }, [gridApi])
   
-  // Column visibility toggle
-  const toggleColumn = useCallback((field: string) => {
-    const column = gridApi?.getColumn(field)
-    if (column) {
-      gridApi?.setColumnsVisible([field], !column.isVisible())
-    }
-  }, [gridApi])
   
   // Clear filters
   const clearFilters = useCallback(() => {
