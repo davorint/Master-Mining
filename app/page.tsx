@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
-import { ArrowRight, Star, Sparkles, Users, MapPin, Calculator, FileText, Truck, Receipt } from "lucide-react"
+import { ArrowRight, Star, Sparkles, Users, MapPin, Calculator, FileText, Truck, Receipt, Gem } from "lucide-react"
 import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence, useInView } from "motion/react"
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
@@ -17,6 +17,7 @@ export default function Home() {
   const featuresRef = useRef(null)
   const testimonialsRef = useRef(null)
   const ctaRef = useRef(null)
+  const heroRef = useRef(null)
   
   // Intersection observer for performance
   const featuresInView = useInView(featuresRef, { once: true, margin: "-100px" })
@@ -28,10 +29,12 @@ export default function Home() {
   const smoothMouseX = useSpring(mouseX, { damping: 30, stiffness: 200 })
   const smoothMouseY = useSpring(mouseY, { damping: 30, stiffness: 200 })
   
-  // Optimized parallax transforms
-  const y1 = useTransform(scrollY, [0, 1000], [0, -100])
-  const y2 = useTransform(scrollY, [0, 1000], [0, -50])
-  const y3 = useTransform(scrollY, [0, 1000], [0, -25])
+  // Premium parallax transforms with easing
+  const y1 = useTransform(scrollY, [0, 1000], [0, -100], { clamp: false })
+  const y2 = useTransform(scrollY, [0, 1000], [0, -50], { clamp: false })
+  const y3 = useTransform(scrollY, [0, 1000], [0, -25], { clamp: false })
+  const heroScale = useTransform(scrollY, [0, 500], [1, 0.95])
+  const heroOpacity = useTransform(scrollY, [0, 500], [1, 0.8])
   
   useEffect(() => {
     let rafId: number
@@ -59,46 +62,226 @@ export default function Home() {
   }, [mouseX, mouseY])
 
   return (
-    <div 
-      className="min-h-screen relative overflow-hidden"
-      style={{
-        background: 'linear-gradient(135deg, #0c0a1a 0%, #1a1435 25%, #2d1b69 50%, #1e3a8a 75%, #1e40af 100%)'
-      }}
-    >
-      {/* Premium Loading Animation */}
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-black dark:via-gray-950 dark:to-black">
+      {/* Premium metallic gradient overlay */}
+      <div className="absolute inset-0 opacity-30 dark:opacity-20 pointer-events-none"
+        style={{
+          background: `
+            radial-gradient(ellipse at top left, rgba(212,175,55,0.15) 0%, transparent 50%),
+            radial-gradient(ellipse at top right, rgba(192,192,192,0.1) 0%, transparent 50%),
+            radial-gradient(ellipse at bottom left, rgba(184,134,11,0.1) 0%, transparent 50%),
+            radial-gradient(ellipse at bottom right, rgba(212,175,55,0.12) 0%, transparent 50%),
+            linear-gradient(180deg, transparent 0%, rgba(212,175,55,0.03) 50%, transparent 100%)
+          `,
+        }}
+      />
+      {/* Ultra Premium Loading Animation */}
       <AnimatePresence>
         {!isLoaded && (
           <motion.div
-            className="fixed inset-0 z-50 bg-black flex items-center justify-center"
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="fixed inset-0 z-50 bg-gradient-to-br from-white via-gray-100 to-white dark:from-black dark:via-gray-900 dark:to-black flex items-center justify-center overflow-hidden"
+            exit={{ opacity: 0, scale: 1.1 }}
+            transition={{ duration: 1.2, ease: [0.43, 0.13, 0.23, 0.96] }}
           >
+            {/* Animated background orbs */}
+            <motion.div
+              className="absolute w-96 h-96 bg-gradient-to-r from-amber-600/20 to-yellow-600/20 rounded-full blur-3xl"
+              animate={{
+                x: [0, 100, 0],
+                y: [0, -100, 0],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute w-80 h-80 bg-gradient-to-r from-gray-600/20 to-gray-400/20 rounded-full blur-3xl"
+              animate={{
+                x: [0, -100, 0],
+                y: [0, 100, 0],
+                scale: [1, 0.8, 1],
+              }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            />
+            
             <motion.div
               className="relative"
-              initial={{ scale: 0.5, opacity: 0 }}
+              initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
+              {/* Premium spinner */}
+              <motion.div className="relative w-24 h-24">
+                <motion.div
+                  className="absolute inset-0 border-2 border-amber-400/20 rounded-full"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                />
+                <motion.div
+                  className="absolute inset-2 border-2 border-transparent border-t-amber-400 border-r-amber-400 rounded-full"
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                />
+                <motion.div
+                  className="absolute inset-4 border-2 border-transparent border-b-gray-400 border-l-gray-400 rounded-full"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                />
+                
+                {/* Center gem */}
+                <motion.div
+                  className="absolute inset-0 flex items-center justify-center"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <Gem className="w-8 h-8 text-amber-600 dark:text-amber-400 drop-shadow-2xl" />
+                </motion.div>
+              </motion.div>
+              
+              {/* Premium loading text with progress */}
               <motion.div
-                className="w-12 h-12 border-2 border-white/20 rounded-full"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-              />
-              <motion.div
-                className="absolute inset-0 w-12 h-12 border-2 border-transparent border-t-white rounded-full"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-              />
+                className="mt-8 text-center"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                <motion.p
+                  className="text-amber-900 dark:text-amber-100 text-sm font-medium tracking-widest uppercase mb-4"
+                  animate={{ opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  Cargando Experiencia Premium
+                </motion.p>
+                
+                {/* Premium progress bar */}
+                <motion.div 
+                  className="w-48 h-1 bg-amber-200/20 dark:bg-amber-800/20 rounded-full overflow-hidden mx-auto"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8 }}
+                >
+                  <motion.div
+                    className="h-full bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400"
+                    initial={{ width: "0%", x: "-100%" }}
+                    animate={{ 
+                      width: "100%", 
+                      x: "0%",
+                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+                    }}
+                    transition={{ 
+                      width: { duration: 1, delay: 0.8 },
+                      x: { duration: 1, delay: 0.8 },
+                      backgroundPosition: { duration: 2, repeat: Infinity, ease: "linear" }
+                    }}
+                    style={{
+                      backgroundSize: "200% 100%",
+                      boxShadow: "0 0 20px rgba(212,175,55,0.5)"
+                    }}
+                  />
+                </motion.div>
+              </motion.div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Cursor-following spotlight effect */}
+      {/* Luxury metallic shimmer effect */}
       <motion.div
-        className="fixed top-0 left-0 w-96 h-96 pointer-events-none z-10"
+        className="absolute inset-0 opacity-10 dark:opacity-5 pointer-events-none"
+        animate={{
+          backgroundPosition: ["0% 0%", "100% 100%"],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "linear"
+        }}
         style={{
-          background: `radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%)`,
+          backgroundImage: `linear-gradient(45deg, 
+            transparent 30%, 
+            rgba(212,175,55,0.1) 50%, 
+            transparent 70%)`,
+          backgroundSize: "200% 200%",
+        }}
+      />
+      
+      {/* Premium noise texture overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.01] dark:opacity-[0.015] pointer-events-none mix-blend-overlay"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
+        }}
+      />
+      
+      {/* Premium floating orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={`orb-${i}`}
+            className="absolute rounded-full"
+            style={{
+              left: `${20 + i * 10}%`,
+              top: `${10 + i * 15}%`,
+              width: `${200 + i * 50}px`,
+              height: `${200 + i * 50}px`,
+              background: i % 3 === 0 
+                ? 'radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 60%)'
+                : i % 3 === 1
+                ? 'radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 60%)'
+                : 'radial-gradient(circle, rgba(16,185,129,0.05) 0%, transparent 60%)',
+              filter: 'blur(80px)',
+            }}
+            animate={{
+              x: [0, 50, -30, 0],
+              y: [0, -60, 40, 0],
+              scale: [1, 1.1, 0.95, 1],
+            }}
+            transition={{
+              duration: 15 + i * 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* Light mode: Premium pearl/diamond effect */}
+      <div className="absolute inset-0 pointer-events-none dark:hidden">
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={`pearl-${i}`}
+            className="absolute rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${100 + Math.random() * 200}px`,
+              height: `${100 + Math.random() * 200}px`,
+              background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(248,250,252,0.4), transparent)',
+              filter: 'blur(40px)',
+            }}
+            animate={{
+              x: [0, 30, -20, 0],
+              y: [0, -40, 30, 0],
+            }}
+            transition={{
+              duration: 20 + i * 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* Luxury cursor-following spotlight with gold tint */}
+      <motion.div
+        className="fixed top-0 left-0 w-[800px] h-[800px] pointer-events-none z-10 mix-blend-soft-light"
+        style={{
+          background: `radial-gradient(circle at center, 
+            rgba(212,175,55,0.08) 0%, 
+            rgba(212,175,55,0.04) 20%,
+            rgba(59,130,246,0.02) 40%, 
+            transparent 70%)`,
+          filter: 'blur(40px)',
           x: smoothMouseX,
           y: smoothMouseY,
           translateX: "-50%",
@@ -124,10 +307,10 @@ export default function Home() {
                 height: `${size}px`,
                 opacity: opacity,
                 background: leftPosition < 33 
-                  ? 'rgba(251, 191, 36, 0.8)'
+                  ? 'rgba(59, 130, 246, 0.6)'
                   : leftPosition > 66 
-                  ? 'rgba(147, 197, 253, 0.8)'
-                  : 'rgba(255, 255, 255, 0.6)',
+                  ? 'rgba(168, 85, 247, 0.6)'
+                  : 'rgba(16, 185, 129, 0.5)',
               }}
               animate={{
                 opacity: i % 5 === 0 ? [opacity * 0.5, 0, opacity * 1.8, 0, opacity * 0.6] : [opacity * 0.5, opacity * 1.8, opacity * 0.6],
@@ -156,7 +339,7 @@ export default function Home() {
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(251,191,36,0.04) 0%, rgba(147,197,253,0.02) 30%, transparent 60%)`,
+          background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(59,130,246,0.03) 0%, rgba(168,85,247,0.02) 30%, transparent 60%)`,
         }}
       />
       <motion.div
@@ -186,8 +369,13 @@ export default function Home() {
       </motion.div>
       {/* Hero Section */}
       <motion.section 
+        ref={heroRef}
         className="relative px-4 py-24 sm:px-6 sm:py-32 lg:px-8 overflow-hidden"
-        style={{ y: y3 }}
+        style={{ 
+          y: y3,
+          scale: heroScale,
+          opacity: heroOpacity
+        }}
       >
         <div className="mx-auto max-w-7xl text-center">
           <div className="mx-auto max-w-4xl">
@@ -249,7 +437,17 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Badge variant="outline" className="mb-8 px-8 py-3 text-sm font-medium border-white/20 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all duration-500 text-white">
+                <Badge variant="outline" className="mb-8 px-8 py-3 text-sm font-medium 
+                  border-amber-400/30 
+                  bg-gradient-to-r from-amber-50/30 via-yellow-50/20 to-amber-50/30 
+                  dark:from-amber-900/20 dark:via-yellow-900/10 dark:to-amber-900/20 
+                  backdrop-blur-xl 
+                  hover:from-amber-100/40 hover:via-yellow-100/30 hover:to-amber-100/40 
+                  dark:hover:from-amber-900/30 dark:hover:via-yellow-900/20 dark:hover:to-amber-900/30 
+                  transition-all duration-500 
+                  text-amber-900 dark:text-amber-100
+                  shadow-[0_5px_20px_rgba(212,175,55,0.15),inset_0_1px_0_rgba(255,255,255,0.3)]
+                  hover:shadow-[0_8px_30px_rgba(212,175,55,0.25),inset_0_1px_0_rgba(255,255,255,0.4)]">
                   <motion.div
                     animate={{ 
                       rotate: [0, 360],
@@ -280,7 +478,10 @@ export default function Home() {
             </motion.div>
             
             <motion.h1 
-              className="mb-8 text-6xl font-bold tracking-tight text-white sm:text-7xl lg:text-8xl font-playfair"
+              className="mb-8 text-6xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-7xl lg:text-8xl font-playfair relative"
+              style={{
+                textShadow: "0 2px 20px rgba(212,175,55,0.1), 0 4px 40px rgba(0,0,0,0.1)",
+              }}
               initial={{ opacity: 0, y: 50, scale: 0.8 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
@@ -307,7 +508,8 @@ export default function Home() {
                 </motion.span>
               ))}
               <motion.span 
-                className="bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400 bg-clip-text text-transparent cursor-pointer font-inter"
+                className="bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400 bg-clip-text text-transparent cursor-pointer font-inter relative"
+                data-text="Master System"
                 style={{
                   backgroundSize: "200% 200%",
                 }}
@@ -335,7 +537,10 @@ export default function Home() {
             </motion.h1>
             
             <motion.p 
-              className="mx-auto mb-12 max-w-2xl text-xl leading-8 text-gray-100 font-inter"
+              className="mx-auto mb-12 max-w-2xl text-xl leading-8 text-gray-700 dark:text-gray-100 font-inter"
+              style={{
+                textShadow: "0 1px 10px rgba(0,0,0,0.1)"
+              }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1.4, ease: "easeOut" }}
@@ -381,7 +586,24 @@ export default function Home() {
               >
                 <Button 
                   size="lg" 
-                  className="group relative px-10 py-6 text-lg font-semibold bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-400 hover:to-yellow-400 border-0 shadow-2xl shadow-orange-500/30 transition-all duration-500 overflow-hidden focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-slate-900"
+                  className="group relative px-12 py-7 text-lg font-semibold text-black/90 
+                    bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 
+                    hover:from-amber-300 hover:via-yellow-200 hover:to-amber-300 
+                    border border-amber-300/50 
+                    shadow-[0_20px_50px_rgba(212,175,55,0.4),inset_0_1px_0_rgba(255,255,255,0.5)] 
+                    hover:shadow-[0_30px_70px_rgba(212,175,55,0.5),inset_0_1px_0_rgba(255,255,255,0.7)] 
+                    transition-all duration-700 
+                    overflow-hidden 
+                    backdrop-blur-sm
+                    before:absolute before:inset-0 
+                    before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent 
+                    before:translate-x-[-200%] hover:before:translate-x-[200%] 
+                    before:transition-transform before:duration-1000
+                    after:absolute after:inset-0
+                    after:bg-gradient-to-t after:from-amber-600/20 after:to-transparent
+                    transform-gpu
+                    hover:scale-[1.02]
+                    active:scale-[0.98]"
                   aria-label="Acceder al sistema Sualtec Master"
                   role="button"
                   tabIndex={0}
@@ -400,7 +622,7 @@ export default function Home() {
                     Acceder al Sistema
                   </motion.span>
                   <motion.div
-                    className="relative z-10 ml-3"
+                    className="relative z-10 ml-3 inline-block"
                     animate={{ x: [0, 3, 0] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                     whileHover={{ 
@@ -507,7 +729,7 @@ export default function Home() {
               ¿Por qué elegir Sualtec Master System?
             </motion.h2>
             <motion.p 
-              className="mx-auto mb-16 max-w-2xl text-lg text-gray-200 font-inter"
+              className="mx-auto mb-16 max-w-2xl text-lg text-gray-600 dark:text-gray-200 font-inter"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -546,7 +768,14 @@ export default function Home() {
                 transition: { duration: 0.3, ease: "easeOut" }
               }}
             >
-              <Card className="group border-white/[0.08] bg-black/50 backdrop-blur-xl transition-all duration-300 hover:bg-black/40 hover:border-white/15 relative overflow-hidden rounded-2xl shadow-2xl shadow-black/20 hover:shadow-orange-500/20 cursor-pointer">
+              <Card className="group border-amber-400/10 bg-gradient-to-br from-black/60 via-black/50 to-amber-900/10 backdrop-blur-xl transition-all duration-500 hover:from-black/50 hover:via-black/40 hover:to-amber-900/20 hover:border-amber-400/30 relative overflow-hidden rounded-3xl shadow-2xl shadow-black/30 hover:shadow-amber-500/40 cursor-pointer
+                before:absolute before:inset-0 
+                before:bg-gradient-to-r before:from-transparent before:via-amber-400/5 before:to-transparent
+                before:translate-y-full hover:before:translate-y-0
+                before:transition-transform before:duration-700
+                transform-gpu perspective-1000
+                hover:scale-[1.02] hover:rotate-y-2
+                ">
                 
                 {/* Enhanced gradient overlay with glow effect */}
                 <motion.div
@@ -574,11 +803,11 @@ export default function Home() {
                     <MapPin className="h-7 w-7 text-orange-300 group-hover:text-orange-200 transition-colors duration-300" />
                   </motion.div>
                   
-                  <CardTitle className="text-xl text-white group-hover:text-orange-100 transition-all duration-300 mb-3 font-semibold font-playfair">
+                  <CardTitle className="text-xl bg-gradient-to-b from-white to-amber-100/90 bg-clip-text text-transparent group-hover:from-amber-100 group-hover:to-yellow-200 transition-all duration-500 mb-3 font-bold font-playfair tracking-wide">
                     Directorio de Clientes
                   </CardTitle>
                   
-                  <CardDescription className="text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed font-inter">
+                  <CardDescription className="text-gray-300/90 group-hover:text-amber-50/90 transition-all duration-500 leading-relaxed font-inter tracking-wide text-sm">
                     Gestión completa de operaciones mineras, plantas de procesamiento y ubicaciones detalladas.
                   </CardDescription>
                 </CardHeader>
@@ -601,11 +830,19 @@ export default function Home() {
                 transition: { duration: 0.3, ease: "easeOut" }
               }}
             >
-              <Card className="group border-white/[0.08] bg-black/50 backdrop-blur-xl transition-all duration-300 hover:bg-black/40 hover:border-white/15 relative overflow-hidden rounded-2xl shadow-2xl shadow-black/20 hover:shadow-emerald-500/20 cursor-pointer">
+              <Card className="group border-emerald-400/10 bg-gradient-to-br from-black/60 via-black/50 to-emerald-900/10 backdrop-blur-2xl transition-all duration-500 hover:from-black/50 hover:via-black/40 hover:to-emerald-900/20 hover:border-emerald-400/30 relative overflow-hidden rounded-3xl shadow-2xl shadow-black/30 hover:shadow-emerald-500/40 cursor-pointer
+                before:absolute before:inset-0 before:bg-gradient-to-br before:from-emerald-400/5 before:via-transparent before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-700
+                after:absolute after:inset-0 
+                after:bg-gradient-to-t after:from-transparent after:via-emerald-400/5 after:to-transparent
+                after:translate-x-full hover:after:translate-x-0
+                after:transition-transform after:duration-700
+                transform-gpu perspective-1000
+                hover:scale-[1.02] hover:rotate-y-[-2deg]
+                ">
                 
                 {/* Enhanced gradient overlay with glow effect */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-emerald-400/3 via-transparent to-blue-400/3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 bg-gradient-to-br from-emerald-400/5 via-transparent to-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 />
                 <motion.div
                   className="absolute inset-0 rounded-2xl"
@@ -617,7 +854,7 @@ export default function Home() {
                 
                 <CardHeader className="pb-6 pt-6 relative z-10">
                   <motion.div 
-                    className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-white/[0.08] backdrop-blur-md border border-white/[0.05] shadow-lg shadow-black/10 group-hover:shadow-emerald-500/20"
+                    className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400/10 to-emerald-600/10 backdrop-blur-xl border border-emerald-400/20 shadow-xl shadow-emerald-900/20 group-hover:shadow-emerald-400/30"
                     whileHover={{ 
                       scale: 1.15,
                       rotate: [0, 15, -15, 0],
@@ -626,14 +863,14 @@ export default function Home() {
                     }}
                     whileTap={{ scale: 0.9 }}
                   >
-                    <Calculator className="h-7 w-7 text-emerald-300 group-hover:text-emerald-200 transition-colors duration-300" />
+                    <Calculator className="h-8 w-8 text-emerald-300 group-hover:text-emerald-200 transition-colors duration-300 drop-shadow-lg" />
                   </motion.div>
                   
-                  <CardTitle className="text-xl text-white group-hover:text-emerald-100 transition-all duration-300 mb-3 font-semibold font-playfair">
+                  <CardTitle className="text-xl text-transparent bg-clip-text bg-gradient-to-br from-white via-emerald-100/90 to-emerald-200/80 group-hover:from-emerald-100 group-hover:via-emerald-200 group-hover:to-emerald-300 transition-all duration-500 mb-3 font-bold font-playfair tracking-wide">
                     Cotizador de Equipos IA
                   </CardTitle>
                   
-                  <CardDescription className="text-gray-200 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed font-inter">
+                  <CardDescription className="text-gray-300/90 group-hover:text-emerald-50/90 transition-all duration-500 leading-relaxed font-inter tracking-wide text-sm">
                     Cotizaciones especializadas para equipos de procesamiento de oro, plata y metales preciosos.
                   </CardDescription>
                 </CardHeader>
@@ -654,7 +891,14 @@ export default function Home() {
                 transition: { duration: 0.3, ease: "easeOut" }
               }}
             >
-              <Card className="group border-white/[0.08] bg-black/50 backdrop-blur-xl transition-all duration-700 hover:bg-black/40 hover:border-white/15 relative overflow-hidden rounded-2xl shadow-2xl shadow-black/20 hover:shadow-blue-500/20 cursor-pointer">
+              <Card className="group border-blue-400/10 bg-gradient-to-br from-black/60 via-black/50 to-blue-900/10 backdrop-blur-xl transition-all duration-700 hover:from-black/50 hover:via-black/40 hover:to-blue-900/20 hover:border-blue-400/30 relative overflow-hidden rounded-3xl shadow-2xl shadow-black/30 hover:shadow-blue-500/40 cursor-pointer
+                before:absolute before:inset-0 
+                before:bg-gradient-to-l before:from-transparent before:via-blue-400/5 before:to-transparent
+                before:translate-x-[-100%] hover:before:translate-x-[100%]
+                before:transition-transform before:duration-700
+                transform-gpu perspective-1000
+                hover:scale-[1.02] hover:rotate-x-[-2deg]
+                ">
                 
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-blue-400/0 via-blue-400/10 to-purple-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -709,7 +953,7 @@ export default function Home() {
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <CardTitle className="text-xl text-white group-hover:text-blue-100 transition-all duration-300 mb-3 font-semibold font-playfair">
+                    <CardTitle className="text-xl bg-gradient-to-b from-white via-blue-100/90 to-blue-200/80 bg-clip-text text-transparent group-hover:from-blue-100 group-hover:via-blue-200 group-hover:to-blue-300 transition-all duration-500 mb-3 font-bold font-playfair tracking-wide">
                       {"CRM Avanzado".split("").map((char, i) => (
                         <motion.span
                           key={i}
@@ -757,7 +1001,14 @@ export default function Home() {
                 transition: { duration: 0.3, ease: "easeOut" }
               }}
             >
-              <Card className="group border-white/[0.08] bg-black/50 backdrop-blur-xl transition-all duration-700 hover:bg-black/40 hover:border-white/15 relative overflow-hidden rounded-2xl shadow-2xl shadow-black/20 hover:shadow-purple-500/20">
+              <Card className="group border-purple-400/10 bg-gradient-to-br from-black/60 via-black/50 to-purple-900/10 backdrop-blur-xl transition-all duration-700 hover:from-black/50 hover:via-black/40 hover:to-purple-900/20 hover:border-purple-400/30 relative overflow-hidden rounded-3xl shadow-2xl shadow-black/30 hover:shadow-purple-500/40 cursor-pointer
+                before:absolute before:inset-0 
+                before:bg-gradient-to-br before:from-transparent before:via-purple-400/5 before:to-transparent
+                before:opacity-0 hover:before:opacity-100
+                before:transition-opacity before:duration-700
+                transform-gpu perspective-1000
+                hover:scale-[1.02] hover:rotate-y-2
+                ">
                 
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-purple-400/0 via-purple-400/10 to-pink-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -812,7 +1063,7 @@ export default function Home() {
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <CardTitle className="text-xl text-white group-hover:text-purple-100 transition-all duration-300 mb-3 font-semibold">
+                    <CardTitle className="text-xl bg-gradient-to-b from-white via-purple-100/90 to-purple-200/80 bg-clip-text text-transparent group-hover:from-purple-100 group-hover:via-purple-200 group-hover:to-purple-300 transition-all duration-500 mb-3 font-bold font-playfair tracking-wide">
                       {"Gestión Documental".split("").map((char, i) => (
                         <motion.span
                           key={i}
@@ -860,7 +1111,14 @@ export default function Home() {
                 transition: { duration: 0.3, ease: "easeOut" }
               }}
             >
-              <Card className="group border-white/[0.08] bg-black/50 backdrop-blur-xl transition-all duration-700 hover:bg-black/40 hover:border-white/15 relative overflow-hidden rounded-2xl shadow-2xl shadow-black/20 hover:shadow-cyan-500/20">
+              <Card className="group border-cyan-400/10 bg-gradient-to-br from-black/60 via-black/50 to-cyan-900/10 backdrop-blur-xl transition-all duration-700 hover:from-black/50 hover:via-black/40 hover:to-cyan-900/20 hover:border-cyan-400/30 relative overflow-hidden rounded-3xl shadow-2xl shadow-black/30 hover:shadow-cyan-500/40 cursor-pointer
+                before:absolute before:inset-0 
+                before:bg-gradient-to-tl before:from-transparent before:via-cyan-400/5 before:to-transparent
+                before:scale-x-0 hover:before:scale-x-100
+                before:transition-transform before:duration-700
+                transform-gpu perspective-1000
+                hover:scale-[1.02] hover:rotate-y-[-2deg]
+                ">
                 
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-cyan-400/0 via-cyan-400/10 to-teal-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -915,7 +1173,7 @@ export default function Home() {
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <CardTitle className="text-xl text-white group-hover:text-cyan-100 transition-all duration-300 mb-3 font-semibold">
+                    <CardTitle className="text-xl bg-gradient-to-b from-white via-cyan-100/90 to-cyan-200/80 bg-clip-text text-transparent group-hover:from-cyan-100 group-hover:via-cyan-200 group-hover:to-cyan-300 transition-all duration-500 mb-3 font-bold font-playfair tracking-wide">
                       {"Fabricantes Europeos".split("").map((char, i) => (
                         <motion.span
                           key={i}
@@ -963,7 +1221,14 @@ export default function Home() {
                 transition: { duration: 0.3, ease: "easeOut" }
               }}
             >
-              <Card className="group border-white/[0.08] bg-black/50 backdrop-blur-xl transition-all duration-700 hover:bg-black/40 hover:border-white/15 relative overflow-hidden rounded-2xl shadow-2xl shadow-black/20 hover:shadow-amber-500/20">
+              <Card className="group border-amber-400/10 bg-gradient-to-br from-black/60 via-black/50 to-amber-900/10 backdrop-blur-xl transition-all duration-700 hover:from-black/50 hover:via-black/40 hover:to-amber-900/20 hover:border-amber-400/30 relative overflow-hidden rounded-3xl shadow-2xl shadow-black/30 hover:shadow-amber-500/40 cursor-pointer
+                before:absolute before:inset-0 
+                before:bg-gradient-to-r before:from-transparent before:via-amber-400/5 before:to-transparent
+                before:translate-y-[-100%] hover:before:translate-y-0
+                before:transition-transform before:duration-700
+                transform-gpu perspective-1000
+                hover:scale-[1.02] hover:rotate-x-2
+                ">
                 
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-amber-400/0 via-amber-400/10 to-orange-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -1021,7 +1286,7 @@ export default function Home() {
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <CardTitle className="text-xl text-white group-hover:text-amber-100 transition-all duration-300 mb-3 font-semibold">
+                    <CardTitle className="text-xl bg-gradient-to-b from-white via-amber-100/90 to-amber-200/80 bg-clip-text text-transparent group-hover:from-amber-100 group-hover:via-amber-200 group-hover:to-amber-300 transition-all duration-500 mb-3 font-bold font-playfair tracking-wide">
                       {"Facturación Digital".split("").map((char, i) => (
                         <motion.span
                           key={i}
@@ -1090,7 +1355,7 @@ export default function Home() {
               Confianza de la Industria
             </motion.h2>
             <motion.p 
-              className="mx-auto mb-16 max-w-2xl text-lg text-gray-200 font-inter"
+              className="mx-auto mb-16 max-w-2xl text-lg text-gray-600 dark:text-gray-200 font-inter"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -1129,9 +1394,9 @@ export default function Home() {
                 transition: { duration: 0.3 }
               }}
             >
-              <Card className="border-white/[0.08] bg-black/50 backdrop-blur-xl relative overflow-hidden group rounded-2xl shadow-2xl shadow-black/20">
+              <Card className="border-gray-400/10 bg-gradient-to-b from-black/70 to-black/50 backdrop-blur-2xl relative overflow-hidden group rounded-3xl shadow-2xl shadow-black/40 hover:shadow-amber-500/20 transition-all duration-500">
                 <motion.div 
-                  className="absolute inset-0 bg-gradient-to-br from-stone-100/20 via-transparent to-stone-200/20 dark:from-stone-700/20 dark:to-stone-600/20 opacity-0 group-hover:opacity-100"
+                  className="absolute inset-0 bg-gradient-to-br from-amber-400/10 via-transparent to-amber-600/10 opacity-0 group-hover:opacity-100"
                   transition={{ duration: 0.5 }}
                 />
                 <CardContent className="p-6 relative z-10">
@@ -1149,12 +1414,12 @@ export default function Home() {
                         transition={{ delay: i * 0.1 + 0.5 }}
                         whileHover={{ scale: 1.2, rotate: 10 }}
                       >
-                        <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                        <Star className="h-5 w-5 fill-amber-500 text-amber-500 dark:fill-yellow-400 dark:text-yellow-400" />
                       </motion.div>
                     ))}
                   </motion.div>
                   <motion.p 
-                    className="mb-4 text-gray-200"
+                    className="mb-4 text-gray-700 dark:text-gray-200"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.8 }}
@@ -1174,8 +1439,8 @@ export default function Home() {
                       </Avatar>
                     </motion.div>
                     <div>
-                      <p className="font-medium text-white">Roberto Martínez</p>
-                      <p className="text-sm text-gray-300">Director de Operaciones, Mina de Oro Rodeo</p>
+                      <p className="font-medium text-gray-900 dark:text-white">Roberto Martínez</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">Director de Operaciones, Mina de Oro Rodeo</p>
                     </div>
                   </motion.div>
                 </CardContent>
@@ -1198,9 +1463,9 @@ export default function Home() {
                 transition: { duration: 0.3 }
               }}
             >
-              <Card className="border-white/[0.08] bg-black/50 backdrop-blur-xl relative overflow-hidden group rounded-2xl shadow-2xl shadow-black/20">
+              <Card className="border-gray-400/10 bg-gradient-to-b from-black/70 to-black/50 backdrop-blur-2xl relative overflow-hidden group rounded-3xl shadow-2xl shadow-black/40 hover:shadow-amber-500/20 transition-all duration-500">
                 <motion.div 
-                  className="absolute inset-0 bg-gradient-to-br from-stone-100/20 via-transparent to-stone-200/20 dark:from-stone-700/20 dark:to-stone-600/20 opacity-0 group-hover:opacity-100"
+                  className="absolute inset-0 bg-gradient-to-br from-amber-400/10 via-transparent to-amber-600/10 opacity-0 group-hover:opacity-100"
                   transition={{ duration: 0.5 }}
                 />
                 <CardContent className="p-6 relative z-10">
@@ -1218,12 +1483,12 @@ export default function Home() {
                         transition={{ delay: i * 0.1 + 0.5 }}
                         whileHover={{ scale: 1.2, rotate: 10 }}
                       >
-                        <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                        <Star className="h-5 w-5 fill-amber-500 text-amber-500 dark:fill-yellow-400 dark:text-yellow-400" />
                       </motion.div>
                     ))}
                   </motion.div>
                   <motion.p 
-                    className="mb-4 text-gray-200"
+                    className="mb-4 text-gray-700 dark:text-gray-200"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.8 }}
@@ -1243,8 +1508,8 @@ export default function Home() {
                       </Avatar>
                     </motion.div>
                     <div>
-                      <p className="font-medium text-white">Laura Cervantes</p>
-                      <p className="text-sm text-gray-300">Gerente de Procesos, Minera Plata Orisyvo</p>
+                      <p className="font-medium text-gray-900 dark:text-white">Laura Cervantes</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">Gerente de Procesos, Minera Plata Orisyvo</p>
                     </div>
                   </motion.div>
                 </CardContent>
@@ -1267,9 +1532,9 @@ export default function Home() {
                 transition: { duration: 0.3 }
               }}
             >
-              <Card className="border-white/[0.08] bg-black/50 backdrop-blur-xl relative overflow-hidden group rounded-2xl shadow-2xl shadow-black/20">
+              <Card className="border-gray-400/10 bg-gradient-to-b from-black/70 to-black/50 backdrop-blur-2xl relative overflow-hidden group rounded-3xl shadow-2xl shadow-black/40 hover:shadow-amber-500/20 transition-all duration-500">
                 <motion.div 
-                  className="absolute inset-0 bg-gradient-to-br from-stone-100/20 via-transparent to-stone-200/20 dark:from-stone-700/20 dark:to-stone-600/20 opacity-0 group-hover:opacity-100"
+                  className="absolute inset-0 bg-gradient-to-br from-amber-400/10 via-transparent to-amber-600/10 opacity-0 group-hover:opacity-100"
                   transition={{ duration: 0.5 }}
                 />
                 <CardContent className="p-6 relative z-10">
@@ -1287,12 +1552,12 @@ export default function Home() {
                         transition={{ delay: i * 0.1 + 0.5 }}
                         whileHover={{ scale: 1.2, rotate: 10 }}
                       >
-                        <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                        <Star className="h-5 w-5 fill-amber-500 text-amber-500 dark:fill-yellow-400 dark:text-yellow-400" />
                       </motion.div>
                     ))}
                   </motion.div>
                   <motion.p 
-                    className="mb-4 text-gray-200"
+                    className="mb-4 text-gray-700 dark:text-gray-200"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.8 }}
@@ -1312,8 +1577,8 @@ export default function Home() {
                       </Avatar>
                     </motion.div>
                     <div>
-                      <p className="font-medium text-white">Ana Salinas</p>
-                      <p className="text-sm text-gray-300">Directora de Adquisiciones, Minera Cordero Gold</p>
+                      <p className="font-medium text-gray-900 dark:text-white">Ana Salinas</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">Directora de Adquisiciones, Minera Cordero Gold</p>
                     </div>
                   </motion.div>
                 </CardContent>
@@ -1370,7 +1635,7 @@ export default function Home() {
         
         <div className="mx-auto max-w-4xl text-center relative z-10">
           <motion.h2 
-            className="mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl font-playfair"
+            className="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl font-playfair"
             initial={{ opacity: 0, y: 30, scale: 0.9 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -1379,7 +1644,7 @@ export default function Home() {
             ¿Listo para Modernizar tu Negocio?
           </motion.h2>
           <motion.p 
-            className="mx-auto mb-8 max-w-2xl text-lg text-gray-200 font-inter"
+            className="mx-auto mb-8 max-w-2xl text-lg text-gray-700 dark:text-gray-200 font-inter"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
@@ -1401,7 +1666,7 @@ export default function Home() {
               }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button size="lg" className="group px-8 py-6 text-lg relative overflow-hidden">
+              <Button size="lg" className="group px-8 py-6 text-lg relative overflow-hidden bg-blue-600 hover:bg-blue-700 dark:bg-stone-600 dark:hover:bg-stone-700 text-white">
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-stone-600 to-stone-700 opacity-0 group-hover:opacity-100"
                   transition={{ duration: 0.3 }}
@@ -1423,7 +1688,7 @@ export default function Home() {
               }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button variant="outline" size="lg" className="px-8 py-6 text-lg">
+              <Button variant="outline" size="lg" className="px-8 py-6 text-lg border-gray-300 dark:border-stone-300/20 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-stone-800/30">
                 Solicitar Cotización
               </Button>
             </motion.div>
@@ -1431,9 +1696,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Luxurious Premium Footer */}
       <motion.footer 
-        className="border-t border-white/[0.08] bg-black/50 backdrop-blur-xl relative shadow-2xl shadow-black/20"
+        className="border-t border-amber-400/20 bg-gradient-to-b from-black/80 via-black/85 to-black/95 backdrop-blur-2xl relative shadow-[0_-20px_50px_rgba(212,175,55,0.1)] overflow-hidden"
+        style={{
+          background: `
+            linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.95) 100%),
+            radial-gradient(ellipse at bottom, rgba(212,175,55,0.05) 0%, transparent 70%)
+          `
+        }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -1462,12 +1733,15 @@ export default function Home() {
               }}
             >
               <motion.h3 
-                className="mb-4 text-2xl font-bold text-white"
+                className="mb-4 text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-200 font-playfair"
+                style={{
+                  filter: "drop-shadow(0 2px 10px rgba(212,175,55,0.3))"
+                }}
                 whileHover={{ scale: 1.02 }}
               >
                 Sualtec Master System
               </motion.h3>
-              <p className="mb-4 max-w-md text-gray-300">
+              <p className="mb-4 max-w-md text-gray-400 font-light tracking-wide">
                 Optimizando las operaciones industriales y mineras a través de tecnología de vanguardia y diseño intuitivo.
               </p>
             </motion.div>
@@ -1477,8 +1751,8 @@ export default function Home() {
                 visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
               }}
             >
-              <h4 className="mb-4 font-semibold text-white">Plataforma</h4>
-              <ul className="space-y-2 text-gray-300">
+              <h4 className="mb-4 font-semibold text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-300">Plataforma</h4>
+              <ul className="space-y-2 text-gray-400">
                 <li><motion.a href="#" whileHover={{ x: 5, color: "rgb(28 25 23)" }} className="hover:text-stone-900 dark:hover:text-stone-50 block">CRM</motion.a></li>
                 <li><motion.a href="#" whileHover={{ x: 5, color: "rgb(28 25 23)" }} className="hover:text-stone-900 dark:hover:text-stone-50 block">Cotizaciones</motion.a></li>
                 <li><motion.a href="#" whileHover={{ x: 5, color: "rgb(28 25 23)" }} className="hover:text-stone-900 dark:hover:text-stone-50 block">Facturación</motion.a></li>
@@ -1491,8 +1765,8 @@ export default function Home() {
                 visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
               }}
             >
-              <h4 className="mb-4 font-semibold text-white">Empresa</h4>
-              <ul className="space-y-2 text-gray-300">
+              <h4 className="mb-4 font-semibold text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-300">Empresa</h4>
+              <ul className="space-y-2 text-gray-400">
                 <li><motion.a href="#" whileHover={{ x: 5, color: "rgb(28 25 23)" }} className="hover:text-stone-900 dark:hover:text-stone-50 block">Nosotros</motion.a></li>
                 <li><motion.a href="#" whileHover={{ x: 5, color: "rgb(28 25 23)" }} className="hover:text-stone-900 dark:hover:text-stone-50 block">Blog</motion.a></li>
                 <li><motion.a href="#" whileHover={{ x: 5, color: "rgb(28 25 23)" }} className="hover:text-stone-900 dark:hover:text-stone-50 block">Carreras</motion.a></li>
@@ -1506,7 +1780,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.5 }}
             viewport={{ once: true }}
           >
-            <Separator className="my-8" />
+            <Separator className="my-8 bg-gradient-to-r from-transparent via-amber-400/20 to-transparent" />
           </motion.div>
           <motion.div 
             className="flex flex-col items-center justify-between gap-4 md:flex-row"
@@ -1516,13 +1790,13 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <motion.p 
-              className="text-gray-300"
+              className="text-gray-400 text-sm tracking-wide"
               whileHover={{ scale: 1.02 }}
             >
-              © 2025 Sualtec Master System. Todos los derechos reservados.
+              © 2025 Sualtec Master System • Premium Experience • Todos los derechos reservados.
             </motion.p>
             <motion.div 
-              className="flex gap-4 text-gray-300"
+              className="flex gap-6 text-gray-400 text-sm"
               initial="hidden"
               whileInView="visible"
               variants={{
@@ -1541,7 +1815,7 @@ export default function Home() {
                   hidden: { opacity: 0, x: -10 },
                   visible: { opacity: 1, x: 0 }
                 }}
-                whileHover={{ y: -2, color: "rgb(28 25 23)" }} 
+                whileHover={{ y: -2, color: "rgb(212 175 55)" }} 
                 className="hover:text-white"
               >
                 Privacidad
@@ -1552,7 +1826,7 @@ export default function Home() {
                   hidden: { opacity: 0, x: -10 },
                   visible: { opacity: 1, x: 0 }
                 }}
-                whileHover={{ y: -2, color: "rgb(28 25 23)" }} 
+                whileHover={{ y: -2, color: "rgb(212 175 55)" }} 
                 className="hover:text-white"
               >
                 Términos
@@ -1563,7 +1837,7 @@ export default function Home() {
                   hidden: { opacity: 0, x: -10 },
                   visible: { opacity: 1, x: 0 }
                 }}
-                whileHover={{ y: -2, color: "rgb(28 25 23)" }} 
+                whileHover={{ y: -2, color: "rgb(212 175 55)" }} 
                 className="hover:text-white"
               >
                 Cookies
